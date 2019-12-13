@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>KBA Website</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+	    <!-- Font Awesome -->
+	    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+	    <!-- Bootstrap -->
+	    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	    <!-- style css -->
+	    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+	    <!-- owl carousel -->
+	    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+	</head>
+	<body>
+        <!-- indexnavbar -->
+        {% include 'partials/_othernavbar.html' %}
+        <!-- Main content -->
+		{% block content %} {% endblock %}
+        <!-- footer -->
+        {% include 'partials/_footer.html' %}
+        <!-- script part for Fontawsome bootsrap -->
+        <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/all.js' %} "></script>	 
+        <!-- script part for owl carausel -->
+        <script src="{% static 'js/owl.carousel.min.js' %} "></script>
+        <script src="{% static 'js/owljquery.js' %} "></script>
+    </body>
+</html>

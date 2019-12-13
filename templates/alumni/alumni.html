@@ -1,0 +1,79 @@
+{% extends 'alumnibase.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- showcase -->
+<section id="showcase-alumni-top" class="text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1>Alumni</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> Alumni</li>
+        </ol>
+      </nav>
+    </div>
+  </section>	
+
+<!-- table -->
+    <section id="al" class="py-4  ``">
+        <div class="container">
+          <div class="row">
+            <div id="al-title" class="col-md-12">
+              <h1>Alumni Info</h1>
+            </div>
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table id="alumi-data" class="table table-striped table-bordered" cellspacing="0">
+                  <thead>
+                      <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Class</th>
+                          <th scope="col">Company</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Field</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">City</th>
+                          <th scope="col">Country</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% if alumni %}
+                      {% for alumnus in alumni %}
+                      <tr>
+                        <td>{{ alumnus.name }}</td>
+                        <td>{{ alumnus.a_class }}</td>
+                        <td>{{ alumnus.a_company }}</td>
+                        <td>{{ alumnus.a_title }}</td>
+                        <td>{{ alumnus.a_field }}</td>
+                        <td>{{ alumnus.a_email }}</td>
+                        <td>{{ alumnus.a_city }}</td>
+                        <td>{{ alumnus.a_country }}</td>
+                      </tr>
+                      {% endfor %}
+                    {% else %}
+                      <div class="col-md-12">
+                        <p>No boardmember</p>
+                      </div>
+                    {% endif %}  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% endblock %}

@@ -1,0 +1,41 @@
+  
+{% extends "accountbase.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Register" %}{% endblock %}
+
+{% block content %}
+    <section id="register" class="bg-light py-5">
+        <div class="container" style="height: 62vh;">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                        <h4><i class="fas fa-user-plus"></i> Register</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">Login</a>.{% endblocktrans %}</p>
+
+                            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                            {% endif %}
+                            <div class="sign-up-policy">
+                                <ul>
+                                    <li>For the E-mail, enter your Columbia E-Mail address</li>
+                                    <li>After confirming your KBA membership, you will be able to access all contents</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-secondary btn-block" type="submit">{% trans "Register" %} &raquo;</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
