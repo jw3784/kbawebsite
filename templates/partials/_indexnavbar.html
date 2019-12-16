@@ -1,6 +1,6 @@
 {% load static %}
 <!--nav bar part  -->
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+          <nav class="navbar navbar-expand-lg navbar-light sticky-top">
             <a class="navbar-brand" href="{% url 'index' %}">
               <img src="{% static 'img/CBSKBAlogo.png' %}" class="logo" alt="">
             </a>
@@ -27,36 +27,39 @@
                 <li class="nav-item mr-3">
                   <a class="nav-link" href="{% url 'events' %}">Events</a>
                 </li>
+              {% if request.user.is_authenticated and request.user.is_staff %}
                 <li class="nav-item mr-3">
                   <a class="nav-link" href="{% url 'alumni' %}">Alumni Data</a>
                 </li>
-              <li class="nav-item mr-3 dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Guidebook</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'guidebook' %}">2020 Guidebook</a>
-                </div>
-              </li>
-            </ul>
-
-            <ul class="navbar-nav ml-auto">
-              {% if request.user.is_authenticated %}
-                <li class="nav-item mr-3">
-                  <a class="nav-link">Hi, {{ request.user.username }}</a>
-                </li>
-                <li class="nav-item mr-3">
-                  <a class="nav-link" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i>   
-            Logout</a>
+                <li class="nav-item mr-3 dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Guidebook</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'guidebook' %}">2020 Guidebook</a>
+                  </div>
                 </li>
               {% else %}
-                <li class="nav-item mr-3">
-                  <a class="nav-link" href="{% url 'account_signup' %}"><i class="fas fa-user-plus"></i> 
-            Register</a>
-                </li>
-                <li class="nav-item mr-3">
-                  <a class="nav-link" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt"></i>   
-            Login</a>
-                </li>
               {% endif %}
-            </ul>
-          </div>
-        </nav>
+              </ul>
+
+              <ul class="navbar-nav ml-auto">
+                {% if request.user.is_authenticated %}
+                  <li class="nav-item mr-3">
+                    <a class="nav-link">Hi, {{ request.user.username }}</a>
+                  </li>
+                  <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i>   
+              Logout</a>
+                  </li>
+                {% else %}
+                  <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'account_signup' %}"><i class="fas fa-user-plus"></i> 
+              Register</a>
+                  </li>
+                  <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt"></i>   
+              Login</a>
+                  </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
